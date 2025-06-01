@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import GameCard from "../components/GameCard";
 
+import { Amplify } from 'aws-amplify';
+import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import config from '../amplifyconfiguration.json';
+
+Amplify.configure(config);
+
 const Index = () => {
   const navigate = useNavigate();
 
@@ -90,4 +98,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default withAuthenticator(Index);

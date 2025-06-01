@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-kidspuzzletalesfun-dev-880d7-authRole",
+      "UnauthRoleArn": "arn:aws:iam::491085406420:role/amplify-kidspuzzletalesfun-dev-880d7-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::491085406420:role/amplify-kidspuzzletalesfun-dev-880d7-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-kidspuzzletalesfun-dev-880d7-deployment",
+      "UnauthRoleName": "amplify-kidspuzzletalesfun-dev-880d7-unauthRole",
+      "StackName": "amplify-kidspuzzletalesfun-dev-880d7",
+      "StackId": "arn:aws:cloudformation:us-east-1:491085406420:stack/amplify-kidspuzzletalesfun-dev-880d7/65838a50-3e84-11f0-a9d8-0afff54d5643",
+      "AmplifyAppId": "d3tmev9j818yzv"
+    },
+    "categories": {
+      "auth": {
+        "kidspuzzletalesfun8fa4c053": {}
+      }
+    }
+  }
+}
