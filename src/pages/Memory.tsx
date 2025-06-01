@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MemoryCard from "../components/MemoryCard";
 import GameControls from "../components/GameControls";
-import VideoModal from "../components/VideoModal";
 import VictoryModal from "../components/VictoryModal";
 import { Brain } from "lucide-react";
 import { Card } from "../types/memory";
@@ -16,9 +15,6 @@ const Memory = () => {
   const [matches, setMatches] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const [difficulty, setDifficulty] = useState(8);
-  const [showVideo, setShowVideo] = useState(false);
-  const [currentVideo, setCurrentVideo] = useState<string>("");
-  const [currentTip, setCurrentTip] = useState<string>("");
   const [isGameActive, setIsGameActive] = useState(false);
   const [canFlipCards, setCanFlipCards] = useState(true);
 
@@ -29,8 +25,6 @@ const Memory = () => {
       .map((cardData, index) => ({
         id: index,
         emoji: cardData.emoji,
-        videoUrl: cardData.videoUrl,
-        educationalTip: cardData.tip,
         isFlipped: false,
         isMatched: false
       }))
@@ -77,7 +71,7 @@ const Memory = () => {
       // Verificar se as cartas combinam
       const [firstId, secondId] = newFlippedCards;
       if (cards[firstId].emoji === cards[secondId].emoji) {
-        // Match encontrado - mostrar vídeo educativo
+        // Match encontrado
         setTimeout(() => {
           const updatedCards = [...newCards];
           updatedCards[firstId].isMatched = true;
@@ -86,11 +80,6 @@ const Memory = () => {
           setMatches(matches + 1);
           setFlippedCards([]);
           setCanFlipCards(true);
-          
-          // Mostrar vídeo educativo
-          setCurrentVideo(cards[firstId].videoUrl || "");
-          setCurrentTip(cards[firstId].educationalTip || "");
-          setShowVideo(true);
         }, 1000);
       } else {
         // Não combina - virar de volta
@@ -106,15 +95,8 @@ const Memory = () => {
     }
   };
 
-  const closeVideo = () => {
-    setShowVideo(false);
-    setCurrentVideo("");
-    setCurrentTip("");
-  };
-
   const startNewGame = () => {
     initializeGame(difficulty / 2);
-    setShowVideo(false);
   };
 
   return (
@@ -127,7 +109,7 @@ const Memory = () => {
             <Brain className="h-10 w-10 text-kidPink animate-pulse" />
             Jogo da Memória
           </h1>
-          <p className="text-lg text-gray-600">Encontre os pares e aprenda algo novo!</p>
+          <p className="text-lg text-gray-600">Encontre os pares!</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -160,13 +142,6 @@ const Memory = () => {
               ))}
             </div>
           </div>
-
-          <VideoModal
-            isVisible={showVideo}
-            videoUrl={currentVideo}
-            tip={currentTip}
-            onClose={closeVideo}
-          />
 
           <VictoryModal
             isVisible={isCompleted}

@@ -16,7 +16,7 @@ const VictoryModal = ({ isVisible, moves, onNewGame }: VictoryModalProps) => {
         <Trophy className="h-16 w-16 text-kidYellow mx-auto mb-4 animate-wiggle" />
         <h2 className="text-3xl font-bold text-gray-800 mb-4">🎉 Fantástico! 🎉</h2>
         <p className="text-lg text-gray-600 mb-6">
-          Você encontrou todos os pares em {moves} jogadas e aprendeu coisas novas!
+          Você encontrou todos os pares em {moves} jogadas!
         </p>
         <button
           onClick={onNewGame}

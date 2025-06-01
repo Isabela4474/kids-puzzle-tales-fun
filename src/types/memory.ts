@@ -4,12 +4,8 @@ export interface Card {
   emoji: string;
   isFlipped: boolean;
   isMatched: boolean;
-  videoUrl?: string;
-  educationalTip?: string;
 }
 
 export interface CardData {
   emoji: string;
-  videoUrl: string;
-  tip: string;
 }
